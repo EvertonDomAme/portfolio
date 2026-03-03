@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* ============================================
+   CSS VARIABLES (Design Tokens)
+   These are our global design values.
+   Using variables means if we want to change
+   a color we only change it in ONE place here
+   and it updates everywhere automatically
+   ============================================ */
+:root {
+  --navy-950: #020817; /* Darkest navy — main background */
+  --navy-900: #0a1628; /* card backgrounds */
+  --navy-800: #0f2040; /* borders and tracks */
+  --navy-700: #163058; /* Dividers */
+  --gold-400: #f4c430; /* Primary accent color — CTAs, highlights */
+  --gold-500: #e6b800; /* Gold hover state */
+  --accent: #4f8ef7;   /* Blue accent — gradients */
+}
+
+/* ============================================
+   BASE STYLES
+   Applied globally to the whole page
+   ============================================ */
+
+/* Enables smooth scrolling when clicking anchor links like #about or #contact */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sets the default page background and text color */
+body {
+  background-color: var(--navy-950);
+  color: white;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   Styles the browser scrollbar to match the page theme
+   Only works in Chrome/Edge (webkit browsers)
+   ============================================ */
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* track - background of the scrollbar */
+::-webkit-scrollbar-track {
+  background: var(--navy-900);
+}
+
+/* thumb - draggable part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: var(--gold-500);
+  border-radius: 3px;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATION
+   Elements with class "reveal" start hidden
+   When JavaScript adds class "visible" they
+   animate into view (fade up effect)
+   We use IntersectionObserver in each component
+   to add the "visible" class when the element
+   enters the viewport
+   ============================================ */
+.reveal {
+  opacity: 0; /* Start invisible */
+  transform: translateY(40px); /* Start 40px below final position */
+  transition:
+    opacity 0.7s ease,    /* Fade in over 0.7 seconds */ 
+    transform 0.7s ease;  /* Slide up over 0.7 seconds */
+}
+
+.reveal.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Back to normal position */
+}
+
+/* ============================================
+   GOLD UNDERLINE
+   Adds a decorative gold line under section titles
+   Usage: <h2 className="gold-underline">Title</h2>
+   Use ::after pseudo-element so we don't need 
+   extra HTML elements just for decoration
+   ============================================ */
+.gold-underline {
+  position: relative; /* Needed so ::after can be positioned relative to this */
+  display: inline-block; /* Shrinks to fit the text width */
+}
+
+.gold-underline::after {
+  content: ""; /* Required for pseudo-elements to show */
+  position: absolute; /* Positioned relative to the parent */
+  bottom: -6px; /* 6px below the text */
+  left: 0;
+  width: 60%; /* Only covers 60% of the text width — design choice */
+  height: 3px;
+  background: var(--gold-400);
+  border-radius: 2px;
+}
+
+/* ============================================
+   GRADIENT TEXT
+   Creates a gold-to-blue gradient on text
+   Usage: <span className="gradient-text">Oliveira</span>
+   Set the background as a gradient
+   then clip it to only show through the text
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #f4c430, #4f8ef7);
+  -webkit-background-clip: text; /* Clips the background to text shape (Chrome/Safari) */
+  -webkit-text-fill-color: transparent; /* Makes the text itself transparent so gradient shows */
+  background-clip: text; /* Standard version for Firefox */
+}
+
+/* ============================================
+   CARD GLOW
+   Adds a subtle lift and glow effect on hover
+   Usage: <div className="card-glow">...</div>
+   ============================================ */
+.card-glow {
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-glow:hover {
+  /* Two layered shadows — blue glow + faint gold glow */
+  box-shadow:
+    0 0 30px rgba(79, 142, 247, 0.15),
+    0 0 60px rgba(244, 196, 48, 0.05);
+  transform: translateY(-4px); /* Subtle lift effect */
+}
