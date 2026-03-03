@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   try {
     // Send the email using the transporter
     await transporter.sendMail({
-      from: `Portfolio Contact <${process.env.EMAIL_USER}>`, // sender shown in inbox
+      from: `Portfolio — ${name} <${process.env.EMAIL_USER}>`, // sender shown in inbox
       to: process.env.EMAIL_USER, // sends to yourself — your own inbox
       replyTo: email, // when you hit Reply it goes to the sender
       subject: `[Portfolio] ${subject} — from ${name}`, // email subject line
