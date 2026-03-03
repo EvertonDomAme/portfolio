@@ -3,6 +3,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 // Projects data array — add real projects here as they are built or in progress
 // Each project has a title, description, tech stack, status, and links
@@ -13,11 +14,12 @@ const projects = [
     description:
       "Personal portfolio built with Next.js 16, React, TypeScript and Tailwind CSS. Features smooth animations, contact form with Nodemailer, and responsive design.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Nodemailer"],
-    status: "In Progress",
+    status: "Live & Evolving",
     // statusColor controls the badge color for each status type
     statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/30",
     github: "https://github.com/EvertonDomAme",
     live: null, // No live URL yet — button will be hidden
+    image: "/favicon.ico", // Placeholder image — replace with actual project screenshot
   },
   {
     title: "JAVA Inventory control System",
@@ -28,6 +30,7 @@ const projects = [
     statusColor: "text-slate-400 bg-slate-400/10 border-slate-400/30",
     github: null,
     live: null,
+    image: "",
   },
 ];
 
@@ -63,8 +66,8 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto">
-            A selection of projects I&apos;ve built or contributed to. More on my
-            GitHub.
+            A selection of projects I&apos;ve built or contributed to. More on
+            my GitHub.
           </p>
         </div>
 
@@ -80,10 +83,20 @@ export default function Projects() {
             >
               {/* ---- Card Top Row — folder icon + status badge ---- */}
               <div className="flex items-start justify-between mb-4">
-                {/* Folder icon — purely decorative */}
-                <div className="w-10 h-10 rounded-lg bg-[#0f2040] border border-white/10 flex items-center justify-center">
-                  {/* Unicode folder emoji as a simple icon */}
-                  <span className="text-yellow-400 text-lg">📁</span>
+                <div className="w-10 h-10 rounded-lg bg-[#0f2040] border border-white/10 flex items-center justify-center overflow-hidden">
+                  {project.image ? (
+                    // If project has an image, show it
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={40}
+                      height={40}
+                      className="rounded-lg object-cover"
+                    />
+                  ) : (
+                    // If no image, fall back to folder emoji
+                    <span className="text-yellow-400 text-lg">📁</span>
+                  )}
                 </div>
 
                 {/* Status badge — color comes from statusColor in the data above */}
