@@ -17,7 +17,7 @@ const projects = [
     status: "Live & Evolving",
     // statusColor controls the badge color for each status type
     statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/30",
-    github: "https://github.com/EvertonDomAme",
+    github: "https://github.com/EvertonDomAme/portfolio",
     live: null, // No live URL yet — button will be hidden
     image: "/favicon.ico", // Placeholder image — replace with actual project screenshot
   },
@@ -25,7 +25,7 @@ const projects = [
     title: "JAVA Inventory control System",
     description:
       "INventory control system built with JAVA, Spring Boot and MySQL. Features CRUD operations, user authentication and role-based access control. Designed for small businesses to manage stock and sales efficiently...",
-    tech: ["JAVA", "Spring Boot", "MySQL"],
+    tech: ["JAVA", "Spring Boot", "PostgresSQL", "Docker", "Next.js", "React.js", "Styled-Components"],
     status: "Under Development",
     statusColor: "text-slate-400 bg-slate-400/10 border-slate-400/30",
     github: null,
