@@ -24,7 +24,7 @@ const projects = [
   {
     title: "JAVA Inventory control System",
     description:
-      "INventory control system built with JAVA, Spring Boot and MySQL. Features CRUD operations, user authentication and role-based access control. Designed for small businesses to manage stock and sales efficiently...",
+      "Inventory control system built with JAVA, Spring Boot, PostgresSQL, Docker - FOr the Dashboard Front-End: Next.js, React.js, Styled-Components. Features CRUD operations, user authentication and role-based access control. Designed for small businesses to manage stock and sales efficiently...",
     tech: ["JAVA", "Spring Boot", "PostgresSQL", "Docker", "Next.js", "React.js", "Styled-Components"],
     status: "Under Development",
     statusColor: "text-slate-400 bg-slate-400/10 border-slate-400/30",
